@@ -2,6 +2,8 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 
+// import TableHeader from './components/TableHeader';
+// import TableBody from './components/TableBody';
 
 const EmployeeTable = () => {
 
