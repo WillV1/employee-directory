@@ -1,0 +1,20 @@
+body {
+  background-color: lightblue;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+}
+
+.header {
+  background-color: blue;
+}
+
+.search {
+  align-items: center;
+}
+
+.form-control {
+  width: 300px;
+}
