@@ -3,34 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 
 
-const EmployeeTable = () => {
+const EmployeeTable = (props) => {
 
-    const employees = [
-        {
-            id: 1,
-            name: "Mike",
-            email: '123@gmail.com',
-            phone: '919-123-4567'
-        },
-        {
-            id: 2,
-            name: "Joe",
-            email: '123@gmail.com',
-            phone: '919-123-4567'
-        },
-        {
-            id: 3,
-            name: "Sue",
-            email: '123@gmail.com',
-            phone: '919-123-4567'
-        },
-        {
-            id: 4,
-            name: "Billy",
-            email: '123@gmail.com',
-            phone: '919-123-4567'
-        }
-    ];
+
 
     const renderEmployees = (employee, index) => {
         return (
@@ -54,7 +29,7 @@ const EmployeeTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {employees.map(renderEmployees)}
+                    {props.employees.map(renderEmployees)}
                 </tbody>
             </Table>
         </Container>
