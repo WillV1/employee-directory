@@ -53,29 +53,51 @@ class App extends React.Component {
       .catch(err => console.log(err));
   };
 
-  renderSearchList = employee => {
-    const { search } = this.search
-    if (search !== '' && employee.name.indexOf(search) === -1) {
-      return null
-    }
+  // renderSearchList = employee => {
+  //   const { search } = this.state
+  //   if (search !== '' && employee.name.indexOf(search) === -1) {
+  //     return null
+  //   }
+  // }
+
+
+  // updateSearch = (event) => {
+  //   this.setState({ search: event.target.value });
+  // }
+
+
+
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   this.renderSearchList();
+  // };
+
+  renderSearchList = () => {
+    const { search } = this.state
+    let filteredEmployees = employees.filter((employee) => { 
+      return employee.name.indexOf(search) >= 0;
+    })
+
   }
 
-  updateSearch = (event) => {
-    this.setState({ search: event.target.value });
-  }
+    updateSearch = event => {
+    this.setState({filteredEmployees})
+    }
+
+  
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.renderSearchList(this.state.search);
-  };
+    this.renderSearchList();
+}
 
 
   render() {
 
-    const { search } = this.state;
-    const filteredEmployees = employees.filter(employee => {
-      return employee.name.indexOf(employee) !== -1
-    })
+    // const { search } = this.state;
+    // const filteredEmployees = employees.filter(employee => {
+    //   return employee.name.indexOf(employee) !== -1
+    // })
     return (
       <Container fluid={false}>
         <Header />
@@ -83,7 +105,10 @@ class App extends React.Component {
           handleInputChange={this.updateSearch}
           handleFormSubmit={this.handleFormSubmit}
         />
-        <EmployeeTable employees={employees} updateEmployeeList={this.updateSearch} />
+        {/* <EmployeeTable employees={employees} updateEmployeeList={this.updateSearch} /> */}
+        <EmployeeTable employees={this.state.filteredEmployees} 
+        updateEmployeeList={this.updateSearch} 
+        />
       </Container>
 
     );
