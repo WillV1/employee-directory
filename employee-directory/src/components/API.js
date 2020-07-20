@@ -1,13 +1,10 @@
 import axios from "axios";
 
+const BASEURL = 'https://randomuser.me/api/?results='
 
-export default {
-const BASEURL = `https://randomuser.me/api/?results=${query}&inc=picture,name,email,phone`
-
-}
 
 export default {
     search: function(query) {
-      return axios.get(BASEURL+ );
+      return axios.get(BASEURL+ query + '&inc=picture,name,email,phone');
     }
   };
