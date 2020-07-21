@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import API from './components/API';
+import axios from "axios";
+// import API from './components/API';
 
 import Header from './components/Header';
 import EmployeeTable from './components/EmployeeTable';
@@ -39,38 +40,41 @@ const employees = [
 class App extends React.Component {
 
   state = {
-    search: ''
+    search: '',
+    filteredEmployees: []
   }
 
-  handleSearch = () => {
 
+  // componentDidMount() {
+  //   this.employeeGroup();
+  // }
 
-  }
+  componentDidMount() {
+    // axios.get({
+    //   url: 'https://randomuser.me/api/?results=10',
+    //   dataType: 'json',
+    //   success: function(data) {
+    //     console.log(data);
+    //   }
+    // }).then(res => {
+    //   const employees = res.data;
+    //   this.setState({ filteredEmployees });
+    // })
 
-  employeeGroup = query => {
-    API.search(query)
-      .then(res => this.setState({ result: res.data }))
-      .catch(err => console.log(err));
+    axios.get('https://randomuser.me/api/?results=10')
+     .then((response) => {
+       console.log(response);
+       this.setState({filteredEmployees})
+     })
+    .catch((error)=>{
+       console.log(error);
+    });
+
   };
 
-  // renderSearchList = employee => {
-  //   const { search } = this.state
-  //   if (search !== '' && employee.name.indexOf(search) === -1) {
-  //     return null
-  //   }
-  // }
-
-
-  // updateSearch = (event) => {
-  //   this.setState({ search: event.target.value });
-  // }
-
-
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   this.renderSearchList();
-  // };
+  updateSearch = (event) => {
+    this.setState({ search: event.target.value });
+  }
 
   renderSearchList = () => {
     const { search } = this.state
@@ -78,13 +82,11 @@ class App extends React.Component {
       return employee.name.indexOf(search) >= 0;
     })
 
-  }
 
-    updateSearch = event => {
     this.setState({filteredEmployees})
-    }
 
-  
+
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -94,10 +96,6 @@ class App extends React.Component {
 
   render() {
 
-    // const { search } = this.state;
-    // const filteredEmployees = employees.filter(employee => {
-    //   return employee.name.indexOf(employee) !== -1
-    // })
     return (
       <Container fluid={false}>
         <Header />
@@ -105,7 +103,6 @@ class App extends React.Component {
           handleInputChange={this.updateSearch}
           handleFormSubmit={this.handleFormSubmit}
         />
-        {/* <EmployeeTable employees={employees} updateEmployeeList={this.updateSearch} /> */}
         <EmployeeTable employees={this.state.filteredEmployees} 
         updateEmployeeList={this.updateSearch} 
         />
