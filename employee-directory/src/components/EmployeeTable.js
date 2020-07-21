@@ -10,10 +10,10 @@ const EmployeeTable = (props) => {
     const renderEmployees = (employee, index) => {
         return (
             <tr key={index}>
-                <td>{employee.photo}</td>
-                <td>{employee.name}</td>
+                <td><img src={employee.picture.thumbnail} alt="employee thumbnail"/></td>
+                <td>{employee.name.first} {employee.name.last}</td>
                 <td>{employee.email}</td>
-                <td>{employee.phone}</td>
+                <td>{employee.cell}</td>
             </tr>
         )
     }

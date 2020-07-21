@@ -25,8 +25,13 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('https://randomuser.me/api/?results=10')
     .then( (response) => {
-      let employees = response.data.results;
-      this.setState({ filteredEmployees: response.data.results });
+      console.log(response);
+      let newArray = [];
+      for (let i = 0; i < response.data.results.length; i++) {
+        newArray.push(response.data.results[i])
+      }
+      console.log(newArray);
+      this.setState({ filteredEmployees: newArray });
     });
 
   };
@@ -35,17 +40,17 @@ class App extends React.Component {
     this.setState({ search: event.target.value });
   }
 
-  // renderSearchList = () => {
-  //   const { search } = this.state
-  //   let filteredEmployees = employees.filter((employee) => {
-  //     return employee.name.indexOf(search) >= 0;
-  //   })
+  renderSearchList = () => {
+    const { search } = this.state
+    let employees = this.state.filteredEmployees.filter((employee) => {
+      return employee.name.indexOf(search) >= 0;
+    })
 
 
-  //   this.setState({ filteredEmployees })
+    // this.setState({ filteredEmployees })
 
 
-  // }
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
