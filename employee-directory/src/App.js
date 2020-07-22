@@ -55,19 +55,31 @@ constructor(props) {
 
   }
 
-  onSortChange = (key) => {
+  onSortChange = () => {
     this.setState({
-        filteredEmployees: this.state.filteredEmployees.sort( (a,b) =>{ 
-          return this.state.direction === 'asc'
-          ? a.name.first > b.name.first
-          : b.name.first < a.name.first 
+        filteredEmployees: [...this.state.filteredEmployees].sort( (a,b) =>{ 
+         if(a.name.first < b.name.first) {
+           return -1;
+         }
+         if (a.name.first > b.name.first) {
+           return 1;
+         }
+         return 0;
         }),
-        direction: {
-          name: this.state.direction === 'asc'
-          ? 'desc' : 'asc'
-        }
+        direction: this.state.direction === 'asc' ? 'desc' : 'asc'                
     })
 	};
+
+  // onSortChange = (key) => {
+  //     this.setState({
+  //         filteredEmployees: [...this.state.filteredEmployees].sort( (a,b) =>{ 
+  //           return this.state.direction === 'asc'
+  //           ? a.name.first > b.name.first
+  //           : b.name.first < a.name.first 
+  //         }),
+  //         direction: this.state.direction === 'asc' ? 'desc' : 'asc'                
+  //     })
+  //   };
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -76,7 +88,7 @@ constructor(props) {
 
 
   render() {
-    const { currentSort } = this.state;
+
     return (
       
       <Container fluid={false}>

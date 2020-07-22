@@ -24,7 +24,7 @@ const EmployeeTable = (props) => {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Name<button onClick={() => props.onSortChange(props.name.first)}>Sort</button></th>
+                        <th>Name<button onClick={() => props.onSortChange(employee.name.first)}>Sort</button></th>
                         <th>Email Address</th>
                         <th>Phone Number</th>
                     </tr>
