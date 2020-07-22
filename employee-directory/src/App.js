@@ -56,17 +56,20 @@ constructor(props) {
   }
 
   onSortChange = () => {
+    var order = this.state.direction === 'asc' ? 'desc' : 'asc';
+
+
     this.setState({
         filteredEmployees: [...this.state.filteredEmployees].sort( (a,b) =>{ 
          if(a.name.first < b.name.first) {
-           return -1;
+           return order === 'asc' ? -1 : 1;
          }
          if (a.name.first > b.name.first) {
-           return 1;
+          return order === 'asc' ? 1 : -1;
          }
          return 0;
         }),
-        direction: this.state.direction === 'asc' ? 'desc' : 'asc'                
+        direction: order          
     })
 	};
 
