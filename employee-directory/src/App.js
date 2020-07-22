@@ -11,13 +11,16 @@ import './App.css';
 
 
 class App extends React.Component {
-
-  state = {
-    search: '',
-    filteredEmployees: []
+constructor(props) {
+  super(props)
+  this.state = {
+    // currentSort: '',
+    filteredEmployees: [],
+    sort: 'asc'
   }
 
-
+  // this.onSortChange = this.onSortChange.bind(this);
+}
   // componentDidMount() {
   
   // }
@@ -43,7 +46,7 @@ class App extends React.Component {
   renderSearchList = () => {
     const { search } = this.state
     let employees = this.state.filteredEmployees.filter((employee) => {
-      return employee.name.indexOf(search) >= 0;
+      return employee.name.first.indexOf(search) >= 0;
     })
 
 
@@ -52,6 +55,20 @@ class App extends React.Component {
 
   }
 
+  onSortChange = (key) => {
+    this.setState({
+        filteredEmployees: this.state.filteredEmployees.sort( (a,b) =>{ 
+          return this.state.direction === 'asc'
+          ? a.name.first > b.name.first
+          : b.name.first < a.name.first 
+        }),
+        direction: {
+          name: this.state.direction === 'asc'
+          ? 'desc' : 'asc'
+        }
+    })
+	};
+
   handleFormSubmit = event => {
     event.preventDefault();
     this.renderSearchList();
@@ -59,8 +76,9 @@ class App extends React.Component {
 
 
   render() {
-
+    const { currentSort } = this.state;
     return (
+      
       <Container fluid={false}>
         <Header />
         <SearchBar value={this.state.search}
@@ -69,6 +87,7 @@ class App extends React.Component {
         />
         <EmployeeTable employees={this.state.filteredEmployees}
           updateEmployeeList={this.updateSearch}
+          onSortChange={this.onSortChange}
         />
       </Container>
 
