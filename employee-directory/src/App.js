@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import axios from "axios";
-// import API from './components/API';
+// import axios from "axios";
+import API from './components/API';
 
 import Header from './components/Header';
 import EmployeeTable from './components/EmployeeTable';
@@ -14,19 +14,15 @@ class App extends React.Component {
 constructor(props) {
   super(props)
   this.state = {
-    // currentSort: '',
+    search: '',
     filteredEmployees: [],
+    employees: [],
     sort: 'asc'
   }
-
-  // this.onSortChange = this.onSortChange.bind(this);
 }
-  // componentDidMount() {
-  
-  // }
 
   componentDidMount() {
-    axios.get('https://randomuser.me/api/?results=10')
+    API.search()
     .then( (response) => {
       console.log(response);
       let newArray = [];
@@ -34,23 +30,28 @@ constructor(props) {
         newArray.push(response.data.results[i])
       }
       console.log(newArray);
-      this.setState({ filteredEmployees: newArray });
+      this.setState({ filteredEmployees: newArray, employees: newArray });
     });
 
   };
 
   updateSearch = (event) => {
     this.setState({ search: event.target.value });
+    this.renderSearchList();
   }
 
   renderSearchList = () => {
     const { search } = this.state
+    if(search === "") {
+      return this.setState({filteredEmployees: this.state.employees})
+    }
+    let searched = search.charAt(0).toUpperCase() + search.slice(1);
     let employees = this.state.filteredEmployees.filter((employee) => {
-      return employee.name.first.indexOf(search) >= 0;
+      return employee.name.first.indexOf(searched) >= 0;
     })
 
 
-    // this.setState({ filteredEmployees })
+    this.setState({ filteredEmployees: employees })
 
 
   }
@@ -73,19 +74,9 @@ constructor(props) {
     })
 	};
 
-  // onSortChange = (key) => {
-  //     this.setState({
-  //         filteredEmployees: [...this.state.filteredEmployees].sort( (a,b) =>{ 
-  //           return this.state.direction === 'asc'
-  //           ? a.name.first > b.name.first
-  //           : b.name.first < a.name.first 
-  //         }),
-  //         direction: this.state.direction === 'asc' ? 'desc' : 'asc'                
-  //     })
-  //   };
-
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log(this.state.search)
     this.renderSearchList();
   }
 

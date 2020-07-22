@@ -14,9 +14,12 @@ const SearchBar = (props) => {
         <Container>
             <Row>
                 <Col sm={2}></Col>
-                <Col sm={10}><span><Form.Control type="text" className="form-control"
+                <Col sm={10}>
+                    <Form>
+                    <Form.Control id="inline" type="text" className="form-control"
                     placeholder="Search" value={props.value} onChange={props.handleInputChange} />
-                    <Button variant="primary" onClick={props.handleFormSubmit}>Search</Button>{' '}</span>
+                    <Button id="inline-button" variant="primary" onClick={props.handleFormSubmit}>Search</Button>{' '}
+                    </Form>
                 </Col>
             </Row>
         </Container>

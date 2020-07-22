@@ -15,3 +15,12 @@ h2 {
 .form-control {
   width: 300px;
 }
+
+#inline {
+ display: inline;
+ margin: 20px 0px;
+}
+
+#inline-button {
+  margin-top: -5px;
+}
