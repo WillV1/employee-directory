@@ -16,9 +16,15 @@ h2 {
   width: 300px;
 }
 
+.button {
+  background-color: transparent;
+  border: none;
+}
+
 #inline {
  display: inline;
- margin: 20px 0px;
+ margin: 20px auto;
+ align-items: center;
 }
 
 #inline-button {

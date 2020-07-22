@@ -2,6 +2,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 
+import { faArrowsAltV } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 const EmployeeTable = (props) => {
 
@@ -24,7 +27,7 @@ const EmployeeTable = (props) => {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Name<button onClick={() => props.onSortChange()}>Sort</button></th>
+                        <th>Name<button className="button" onClick={() => props.onSortChange()}><FontAwesomeIcon icon={faArrowsAltV} /></button></th>
                         <th>Email Address</th>
                         <th>Phone Number</th>
                     </tr>
