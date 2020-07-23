@@ -1,6 +1,6 @@
 # employee-directory
 
-[![Skill: React](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+[![Skill: React](https://img.shields.io/badge/License-MIT-red.svg)]
 
 ## Description
   
