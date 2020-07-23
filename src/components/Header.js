@@ -9,10 +9,10 @@ const Header = () => {
     return (
         <Jumbotron fluid={false} className="header">
             <Container>
-                <h2>Employee Directory</h2>
-                <p>
+                <h1>Employee Directory</h1>
+                <h5>
                     Click on arrow to sort by first name or use search box to filter by name.
-                </p>
+                </h5>
             </Container>
         </Jumbotron>
     );

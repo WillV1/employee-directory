@@ -35,24 +35,7 @@ constructor(props) {
   };
 
   updateSearch = (event) => {
-    this.setState({ search: event.target.value });
-    this.renderSearchList();
-  }
-
-  renderSearchList = () => {
-    const { search } = this.state
-    if(search === "") {
-      return this.setState({filteredEmployees: this.state.employees})
-    }
-    let searched = search.charAt(0).toUpperCase() + search.slice(1);
-    let employees = this.state.filteredEmployees.filter((employee) => {
-      return employee.name.first.indexOf(searched) >= 0;
-    })
-
-
-    this.setState({ filteredEmployees: employees })
-
-
+    this.setState({ search: event.target.value }, );
   }
 
   onSortChange = () => {
@@ -77,6 +60,13 @@ constructor(props) {
 
   render() {
 
+    const {filteredEmployees, search} = this.state;
+    const employees = filteredEmployees.filter(filteredEmployee => 
+      filteredEmployee.name.first.toLowerCase().includes(search.toLowerCase())
+      )
+
+    
+
     return (
       
       <Container fluid={false}>
@@ -84,7 +74,7 @@ constructor(props) {
         <SearchBar value={this.state.search}
           handleInputChange={this.updateSearch}
         />
-        <EmployeeTable employees={this.state.filteredEmployees}
+        <EmployeeTable employees={employees}
           updateEmployeeList={this.updateSearch}
           onSortChange={this.onSortChange}
         />
