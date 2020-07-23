@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-// import axios from "axios";
 import API from './components/API';
 
 import Header from './components/Header';
@@ -74,11 +73,6 @@ constructor(props) {
     })
 	};
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    console.log(this.state.search)
-    this.renderSearchList();
-  }
 
 
   render() {
@@ -89,7 +83,6 @@ constructor(props) {
         <Header />
         <SearchBar value={this.state.search}
           handleInputChange={this.updateSearch}
-          handleFormSubmit={this.handleFormSubmit}
         />
         <EmployeeTable employees={this.state.filteredEmployees}
           updateEmployeeList={this.updateSearch}

@@ -1,16 +1,16 @@
-body {
-  background-color: lightblue;
-}
-
 h2 {
   text-align: center;
   color: white;
 }
 
-.header {
-  background-color: blue;
+p {
+  text-align: center;
+  color: white;
 }
 
+.header {
+  background-color: royalblue;
+}
 
 .form-control {
   width: 300px;
@@ -23,7 +23,7 @@ h2 {
 
 #inline {
  display: inline;
- margin: 20px auto;
+ margin: 5px 0 30px 0;
  align-items: center;
 }
 

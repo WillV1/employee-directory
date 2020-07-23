@@ -23,7 +23,7 @@ const EmployeeTable = (props) => {
     return (
         
         <Container>
-            <Table bordered>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th></th>

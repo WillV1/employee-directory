@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button'
 
 import '../App.css';
 
@@ -13,13 +12,14 @@ const SearchBar = (props) => {
     return (
         <Container>
             <Row>
-                <Col sm={2}></Col>
-                <Col md={{ span: 6, offset: 2 }}><Form>
-                    <Form.Control id="inline" type="text" className="form-control"
+                <Col md={4}></Col>
+                <Col md={4}>
+                    <Form>
+                    <Form.Control id="inline" type="search" className="form-control"
                         placeholder="Search" value={props.value} onChange={props.handleInputChange} />
-                    <Button id="inline-button" variant="primary" onClick={props.handleFormSubmit}>Search</Button>{' '}
                 </Form>
                 </Col>
+                <Col md={4}></Col>
             </Row>
         </Container>
     )
