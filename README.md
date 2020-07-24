@@ -4,7 +4,7 @@
 
 ## Description
   
-This React SWA allows the user to be able to view his/her entire employee directory at once so that I have quick access to pertinent information. The user is then able to filter and sort on selected parameter as necessary. The objective of this application is to break up your application's UI into components, manage component state, and respond to user events.
+This React SPA allows the user to be able to view his/her entire employee directory at once so that I have quick access to pertinent information. The user is then able to filter and sort on selected parameter as necessary. The objective of this application is to break up your application's UI into components, manage component state, and respond to user events.
 
 ## Table of Contents
 
